@@ -421,6 +421,12 @@ config SMB1360_CHARGER_FG
 	  The driver reports the status via the power supply framework.
 	  A status change triggers an IRQ via the device STAT pin.
 
+config THUNDERCHARGE_CONTROL
+     bool "Enable ThunderCharge Current Controlling mechanism"
+     depends on SMB1360_CHARGER_FG
+     help
+       Say Y here to enable ability to adjust charger current
+
 config SMB358_CHARGER
 	tristate "SMB358 Battery Charger"
 	depends on I2C
