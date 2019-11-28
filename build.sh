@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Custom build script for Escrima Kernel
+# Custom build script for Elindir Kernel
 
 # Constants
 green='\033[01;32m'
@@ -16,7 +16,7 @@ KERNEL_DIR=$PWD
 Anykernel_DIR=$KERNEL_DIR/AnyKernel3/
 DATE=$(date +"%d%m%Y")
 TIME=$(date +"-%H.%M.%S")
-KERNEL_NAME="Escrima-X28-Kamui-LightningBlade-PurpleLightning"
+KERNEL_NAME="Elindir-v1"
 DEVICE="-kenzo-"
 FINAL_ZIP="$KERNEL_NAME""$DEVICE""$DATE""$TIME"
 
@@ -31,14 +31,14 @@ rm -rf arch/arm64/boot/Image.gz
 rm -rf arch/arm64/boot/Image.gz-dtb
 
 # Export few variables
-export KBUILD_BUILD_USER="AmolAmrit"
-export KBUILD_BUILD_HOST="Nightwing"
-export CROSS_COMPILE=/home/amol/pie/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-android-
+export KBUILD_BUILD_USER="KrittinKalra"
+export KBUILD_BUILD_HOST="Nightingale"
+export CROSS_COMPILE=/home/krittinkalra/aarch64-linux-android-8.x/bin/aarch64-linux-android-
 export ARCH="arm64"
 export USE_CCACHE=1
 
 echo -e "$green***********************************************"
-echo  "           Compiling Escrima Kernel                    "
+echo  "           Compiling Elindir Kernel                    "
 echo -e "***********************************************"
 
 # Finally build it
