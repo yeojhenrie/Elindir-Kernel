@@ -14,7 +14,7 @@
 	dsi_dual_nt35523_video: qcom,mdss_dsi_nt35523_wqxga_video {
 		qcom,mdss-dsi-panel-name = "nt35523 video mode dual dsi panel without DSC";
 		qcom,mdss-dsi-panel-type = "dsi_video_mode";
-		qcom,mdss-dsi-panel-framerate = <60>;
+		qcom,mdss-dsi-panel-framerate = <61>;
 		qcom,mdss-dsi-virtual-channel-id = <0>;
 		qcom,mdss-dsi-stream = <0>;
 		qcom,mdss-dsi-panel-width = <768>;
