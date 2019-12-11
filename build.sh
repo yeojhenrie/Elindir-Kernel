@@ -33,7 +33,7 @@ rm -rf arch/arm64/boot/Image.gz-dtb
 # Export few variables
 export KBUILD_BUILD_USER="KrittinKalra"
 export KBUILD_BUILD_HOST="Nightingale"
-export CROSS_COMPILE=/home/krittinkalra/aarch64-linux-android-8.x/bin/aarch64-linux-android-
+export CROSS_COMPILE=/usr/bin/aarch64-linux-gnu-
 export ARCH="arm64"
 export USE_CCACHE=1
 
