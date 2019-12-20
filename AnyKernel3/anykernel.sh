@@ -4,7 +4,7 @@
 ## AnyKernel setup
 # begin properties
 properties() { '
-kernel.string=Elindir-v1-OldJackFix
+kernel.string=Elindir-v2
 do.devicecheck=1
 do.modules=0
 do.cleanup=1
