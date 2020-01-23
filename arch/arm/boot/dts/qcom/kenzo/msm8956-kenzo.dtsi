@@ -255,7 +255,7 @@
 			< 600000000   6 >,  /* NOM       */
 			< 623330000   7 >,  /* Turbo     */
 			< 710000000   8 >,  /* Super Turbo */
-			< 753333333   9 >;  /* Super Turbo V2 */
+			< 805000000   9 >;  /* Super Turbo V2 */
 		#clock-cells = <1>;
 	};
 
