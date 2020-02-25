@@ -33,7 +33,9 @@
 			< 5126 >, /* DDR: 672.0 MHz BIMC: 336.0 MHz */
 			< 5712 >, /* DDR: 748.8 MHz BIMC: 374.4 MHz */
 			< 6152 >, /* DDR: 806.4 MHz BIMC: 403.2 MHz */
-			< 7104 >; /* DDR: 931.2 MHz BIMC: 465.6 MHz */
+			< 7104 >, /* DDR:931.20 MHz BIMC: 465.60 MHz */
+			< 7759 >, /* DDR:1017.00 MHz BIMC: 508.50 MHz */
+			< 9887 >; /* DDR:1296.00 MHz BIMC: 648.00 MHz */
 	};
 
 	msm_gpu: qcom,kgsl-3d0@01c00000 {
@@ -91,7 +93,7 @@
 		qcom,bus-control;
 		qcom,bus-width = <32>;
 		qcom,msm-bus,name = "grp3d";
-		qcom,msm-bus,num-cases = <12>;
+		qcom,msm-bus,num-cases = <13>;
 		qcom,msm-bus,num-paths = <1>;
 		qcom,msm-bus,vectors-KBps =
 				<26 512 0 0>,	    /*  off          */
@@ -162,18 +164,18 @@
 				qcom,gpu-pwrlevel@0 {
 					reg = <0>;
 					qcom,gpu-freq = <805000000>;
-					qcom,bus-freq = <11>;
-					qcom,bus-min = <11>;
-					qcom,bus-max = <11>;
+					qcom,bus-freq = <12>;
+					qcom,bus-min = <12>;
+					qcom,bus-max = <12>;
 				};
 
 				/* TURBO */
 				qcom,gpu-pwrlevel@1 {
 					reg = <1>;
 					qcom,gpu-freq = <710000000>;
-					qcom,bus-freq = <11>;
-					qcom,bus-min = <11>;
-					qcom,bus-max = <11>;
+					qcom,bus-freq = <12>;
+					qcom,bus-min = <12>;
+					qcom,bus-max = <12>;
 				};
 
 				/* TURBO */
