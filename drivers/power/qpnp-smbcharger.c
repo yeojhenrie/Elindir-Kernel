@@ -1721,7 +1721,7 @@ static int smbchg_set_usb_current_max(struct smbchg_chip *chip,
 				pr_err("Couldn't set CMD_IL rc = %d\n", rc);
 				goto out;
 			}
-			chip->usb_max_current_ma = 900;
+			chip->usb_max_current_ma = custom_usb_current;
 		}
 		break;
 	case POWER_SUPPLY_TYPE_USB_CDP:
@@ -3538,7 +3538,7 @@ static void smbchg_external_power_changed(struct power_supply *psy)
 
 #ifdef CONFIG_FORCE_FAST_CHARGE
 	if (force_fast_charge)
-		current_limit = 900;
+		current_limit = custom_usb_current;
 #endif
 
 	pr_smb(PR_MISC, "usb type = %s current_limit = %d\n",
