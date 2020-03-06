@@ -68,6 +68,7 @@ static ssize_t cust_usb_current_store(struct kobject *kobj, struct kobj_attribut
 		custom_usb_current = newcurr;
 	else
 		pr_info("%s: disabled or limit reached, ignoring\n", THUNDERCHARGE);
+                custom_usb_current = USB_CURRENT;
 	return count;
 }
 
@@ -84,6 +85,7 @@ static ssize_t cust_ac_current_store(struct kobject *kobj, struct kobj_attribute
 		custom_ac_current = newcurr;
 	else
 		pr_info("%s: disabled or limit reached, ignoring\n", THUNDERCHARGE);
+                custom_ac_current = AC_CURRENT;
 	return count;
 }
 
