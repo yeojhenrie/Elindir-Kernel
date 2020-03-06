@@ -41,10 +41,7 @@
 #include <linux/ktime.h>
 #include <linux/thermal.h>
 #include "pmic-voter.h"
-
-#ifdef CONFIG_THUNDERCHARGE_CONTROL
 #include "thundercharge_control.h"
-#endif
 
 #ifdef CONFIG_FORCE_FAST_CHARGE
 #include <linux/fastcharge.h>

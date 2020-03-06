@@ -27,10 +27,7 @@
 #include <linux/hrtimer.h>
 #include <linux/power_supply.h>
 #include <linux/cdev.h>
-
-#ifdef CONFIG_THUNDERCHARGE_CONTROL
-#include "thundercharge_control.h"
-#endif
+#include "../../../drivers/power/thundercharge_control.h"
 
 /*
  * The following are bit fields describing the usb_request.udc_priv word.
