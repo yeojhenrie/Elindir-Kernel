@@ -27,8 +27,6 @@
 #include <linux/hrtimer.h>
 #include <linux/power_supply.h>
 #include <linux/cdev.h>
-#include "../../../drivers/power/thundercharge_control.h"
-
 /*
  * The following are bit fields describing the usb_request.udc_priv word.
  * These bit fields are set by function drivers that wish to queue
@@ -107,13 +105,13 @@ enum msm_usb_phy_type {
 	QUSB_ULPI_PHY,
 };
 
-#define IDEV_CHG_MAX	custom_ac_current
+#define IDEV_CHG_MAX	2400
 #define IDEV_CHG_MIN	500
 #define IUNIT		100
 
-#define IDEV_ACA_CHG_MAX	custom_ac_current
+#define IDEV_ACA_CHG_MAX	2400
 #define IDEV_ACA_CHG_LIMIT	500
-#define IDEV_HVDCP_CHG_MAX	custom_ac_current
+#define IDEV_HVDCP_CHG_MAX	2400
 
 /**
  * Different states involved in USB charger detection.
