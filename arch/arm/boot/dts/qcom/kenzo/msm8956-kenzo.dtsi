@@ -969,14 +969,14 @@
 		qcom,msm-bus,num-cases = <9>;
 		qcom,msm-bus,num-paths = <1>;
 		qcom,msm-bus,vectors-KBps = <78 512 0 0>, /* No vote */
-			<78 512 1046 3200>,    /* 400 KB/s*/
-			<78 512 52286 160000>, /* 20 MB/s */
-			<78 512 65360 200000>, /* 25 MB/s */
-			<78 512 130718 400000>, /* 50 MB/s */
-			<78 512 130718 400000>, /* 100 MB/s */
-			<78 512 261438 800000>, /* 200 MB/s */
-			<78 512 261438 800000>, /* 400 MB/s */
-			<78 512 1338562 4096000>; /* Max. bandwidth */
+			<78 512 1600 3200>,       /* 400 KB/s*/
+			<78 512 80000 160000>,    /* 20 MB/s */
+			<78 512 100000 200000>,   /* 25 MB/s */
+			<78 512 200000 400000>,   /* 50 MB/s */
+			<78 512 400000 800000>,   /* 100 MB/s */
+			<78 512 400000 800000>,   /* 200 MB/s */
+			<78 512 400000 800000>,   /* 400 MB/s */
+			<78 512 2048000 4096000>; /* Max. bandwidth */
 		qcom,bus-bw-vectors-bps = <0 400000 20000000 25000000 50000000
 			100000000 200000000 400000000 4294967295>;
 
@@ -1128,8 +1128,8 @@
 		qcom,msm-bus,num-cases = <2>;
 		qcom,msm-bus,num-paths = <1>;
 		qcom,msm-bus,vectors-KBps =
-					<86 512 0 0>,
-					<86 512 500 800>;
+					<100 512 0 0>,
+					<100 512 500 800>;
 		status = "disabled";
 	};
 
@@ -1586,7 +1586,7 @@
 		qcom,msm-bus,num-paths = <1>;
 		qcom,msm-bus,vectors-KBps =
 			<55 512 0 0>,
-			<55 512 393600 393600>;
+			<55 512 400000 400000>;
 		clocks = <&clock_gcc clk_crypto_clk_src>,
 			 <&clock_gcc clk_gcc_crypto_clk>,
 			 <&clock_gcc clk_gcc_crypto_ahb_clk>,
@@ -1617,7 +1617,7 @@
 		qcom,msm-bus,num-paths = <1>;
 		qcom,msm-bus,vectors-KBps =
 			<55 512 0 0>,
-			<55 512 393600 393600>;
+			<55 512 400000 400000>;
 		clocks = <&clock_gcc clk_crypto_clk_src>,
 			 <&clock_gcc clk_gcc_crypto_clk>,
 			 <&clock_gcc clk_gcc_crypto_ahb_clk>,
