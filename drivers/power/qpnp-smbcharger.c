@@ -420,19 +420,19 @@ module_param_named(
 	int, S_IRUSR | S_IWUSR
 );
 
-static int smbchg_default_hvdcp_icl_ma = 1500;
+static int smbchg_default_hvdcp_icl_ma = 2650;
 module_param_named(
 	default_hvdcp_icl_ma, smbchg_default_hvdcp_icl_ma,
 	int, S_IRUSR | S_IWUSR
 );
 
-static int smbchg_default_hvdcp3_icl_ma = 2000;
+static int smbchg_default_hvdcp3_icl_ma = 2650;
 module_param_named(
 	default_hvdcp3_icl_ma, smbchg_default_hvdcp3_icl_ma,
 	int, S_IRUSR | S_IWUSR
 );
 
-static int smbchg_default_dcp_icl_ma = 2000;
+static int smbchg_default_dcp_icl_ma = 2650;
 module_param_named(
 	default_dcp_icl_ma, smbchg_default_dcp_icl_ma,
 	int, S_IRUSR | S_IWUSR
@@ -1021,7 +1021,9 @@ static int get_property_from_fg(struct smbchg_chip *chip,
 }
 
 static int get_prop_batt_voltage_now(struct smbchg_chip *chip);
+
 #define DEFAULT_BATT_CAPACITY	1
+#define DEFAULT_BATT_VOLTAGE_MAX	4200000
 static int get_prop_batt_capacity(struct smbchg_chip *chip)
 {
 	int capacity, rc;
@@ -1037,7 +1039,7 @@ static int get_prop_batt_capacity(struct smbchg_chip *chip)
 
 	if (is_usb_present(chip)
 			&& (POWER_SUPPLY_STATUS_FULL == get_prop_batt_status(chip))
-			&& get_prop_batt_voltage_now(chip) > 4300000)
+			&& get_prop_batt_voltage_now(chip) > 4100000)
 		capacity = 100;
 
 	return capacity;
@@ -1060,7 +1062,7 @@ static int get_prop_batt_temp(struct smbchg_chip *chip)
 }
 
 #ifdef CONFIG_MACH_XIAOMI_KENZO
-#define DEFAULT_BATT_CAPACITY_FULL	4050000
+#define DEFAULT_BATT_CAPACITY_FULL	20000000
 #else
 #define DEFAULT_BATT_CAPACITY_FULL	4850000
 #endif
@@ -1830,7 +1832,7 @@ static int smbchg_set_fastchg_current_raw(struct smbchg_chip *chip,
 #define USBIN_ACTIVE_PWR_SRC_BIT	BIT(1)
 #define DCIN_ACTIVE_PWR_SRC_BIT		BIT(0)
 #define PARALLEL_REENABLE_TIMER_MS	1000
-#define PARALLEL_CHG_THRESHOLD_CURRENT	2100
+#define PARALLEL_CHG_THRESHOLD_CURRENT	2650
 static bool smbchg_is_usbin_active_pwr_src(struct smbchg_chip *chip)
 {
 	int rc;
@@ -2926,18 +2928,18 @@ static int smbchg_float_voltage_comp_set(struct smbchg_chip *chip, int code)
 
 #define VFLOAT_CFG_REG			0xF4
 #define MIN_FLOAT_MV			3600
-#define MAX_FLOAT_MV			4500
+#define MAX_FLOAT_MV			4200
 #define VFLOAT_MASK			SMB_MASK(5, 0)
 
 #define MID_RANGE_FLOAT_MV_MIN		3600
 #define MID_RANGE_FLOAT_MIN_VAL		0x05
 #define MID_RANGE_FLOAT_STEP_MV		20
 
-#define HIGH_RANGE_FLOAT_MIN_MV		4340
+#define HIGH_RANGE_FLOAT_MIN_MV		4160
 #define HIGH_RANGE_FLOAT_MIN_VAL	0x2A
 #define HIGH_RANGE_FLOAT_STEP_MV	10
 
-#define VHIGH_RANGE_FLOAT_MIN_MV	4360
+#define VHIGH_RANGE_FLOAT_MIN_MV	4180
 #define VHIGH_RANGE_FLOAT_MIN_VAL	0x2C
 #define VHIGH_RANGE_FLOAT_STEP_MV	20
 static int smbchg_float_voltage_set(struct smbchg_chip *chip, int vfloat_mv)
@@ -4799,7 +4801,7 @@ static void increment_aicl_count(struct smbchg_chip *chip)
 
 static int wait_for_usbin_uv(struct smbchg_chip *chip, bool high)
 {
-	int rc;
+	int rc = 0;
 	int tries = 3;
 	struct completion *completion = &chip->usbin_uv_lowered;
 	bool usbin_uv;
@@ -4829,7 +4831,7 @@ static int wait_for_usbin_uv(struct smbchg_chip *chip, bool high)
 
 static int wait_for_src_detect(struct smbchg_chip *chip, bool high)
 {
-	int rc;
+	int rc = 0;
 	int tries = 3;
 	struct completion *completion = &chip->src_det_lowered;
 	bool src_detect;
@@ -7206,7 +7208,7 @@ static struct of_device_id smbchg_match_table[] = {
 };
 
 #define DC_MA_MIN 300
-#define DC_MA_MAX 2100
+#define DC_MA_MAX 2650
 #define OF_PROP_READ(chip, prop, dt_property, retval, optional)		\
 do {									\
 	if (retval)							\
@@ -7321,7 +7323,7 @@ err:
 }
 
 #define DEFAULT_VLED_MAX_UV		3500000
-#define DEFAULT_FCC_MA			2100
+#define DEFAULT_FCC_MA			2650
 static int smb_parse_dt(struct smbchg_chip *chip)
 {
 	int rc = 0, ocp_thresh = -EINVAL;
@@ -7935,7 +7937,7 @@ static int smbchg_probe(struct spmi_device *spmi)
 	int rc;
 	struct smbchg_chip *chip;
 	struct power_supply *usb_psy;
-	struct qpnp_vadc_chip *vadc_dev, *vchg_vadc_dev;
+	struct qpnp_vadc_chip *vadc_dev = NULL, *vchg_vadc_dev = NULL;
 
 	usb_psy = power_supply_get_by_name("usb");
 	if (!usb_psy) {
